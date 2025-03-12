@@ -1,10 +1,10 @@
 # Elements-of-Big-Data
 Elements of Big Data. Topics: Spark and Hadoop
 
-## Projects: Similarity Search ![image](https://github.com/user-attachments/assets/dc37f44a-f0a9-4b8a-a70c-c4c1a52063de)
+## Projects: Similarity Search
 
 1. Introduction 
-The objective of this final project is to find hospitals with similar characteristics in the impact of covid. Being able to quickly find similar hospitals can be useful for connecting hospitals experiencing difficulties and finding the characteristics of hospitals that have dealt better with the pandemic. [Link here](https://healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/anagcw7u  )![image](https://github.com/user-attachments/assets/a801c308-d07b-4451-bbc1-95c22b37920f)
+The objective of this final project is to find hospitals with similar characteristics in the impact of covid. Being able to quickly find similar hospitals can be useful for connecting hospitals experiencing difficulties and finding the characteristics of hospitals that have dealt better with the pandemic. [Link here](https://healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/anagcw7u  )
 
 
 Data. You will use the dataset "COVID-19 Reported Patient Impact and Hospital Capacity by Facility" provided by the US Health and Human Services, containing 420k rows and 109 columns as reported on March 14, 2022: 
@@ -25,19 +25,22 @@ Create a “signature” for each hospital: Use the efficient Minhashing approac
 
 Checkpoint B) At the end of this step, print the signature vector for the following hospital_pks: 150034, 050739, 330231,241326, 070008. 
 
+```
 Hints: 
 - Store the hash functions in a broadcast variable.
 - Consider setting things up such that a reduceByKey with key as (i, sid ) can be used to find the minimum hashed value for a feat per sid . This would be instead of the line in the slides: 
-  - if hi(feat) < Sig[i][sid]: Sig[i][sid] = hi(feat) 
+  - `if hi(feat) < Sig[i][sid]: Sig[i][sid] = hi(feat)`
+```
 
 C. Find similar pairs using LSH 
 Run LSH to find approximately 20 candidates that are most similar to hospitals: 150034, 50739, 330231,241326, 70008. From the perspective of LSH, each hospital is a column with each row being a value of the signatures. Tweak bands and rows per band in order to get approximately 20 candidates (i.e. anything between 10 to 30 candidates per hospital is ok).  
 
 Checkpoint C) At the end of this step, print the 10 to 30 hospitals your LSH returns for the following hospital_pks: 150034, 50739, 330231,241326, 70008.  For each potential match, print: (a) hospital_pk, (b) the Jaccard similarity with the target hospital, and (c) the first 10 values of the signature matrix. 
 
-Hints: 
+```Hints: 
 - Note that there are 100 rows total, but you’re also welcome to divide into a number that doesn’t evenly fit, in which case just leave out the remainder (e.g. 3 bands of 5 rows, and ignore the last row).
-- Set things up such that each RDD record is a signature, and so from the perspective of LSH, each record is a column. 
+- Set things up such that each RDD record is a signature, and so from the perspective of LSH, each record is a column.
+```
 
 3. Submission 
 You must submit the pdf file of your report. In fact, it must contain the responses in form of outputs for the three tasks. In addition, you must submit all your implementations in a.ipynb file that can be run on Google Colab. Please, do not your final project in .zip or .rar files. 
