@@ -53,5 +53,4 @@ You must submit the pdf file of your report. In fact, it must contain the respon
 - Extracting, transforming and selecting features
 - MinHashLSH example on Spark
 - Python programming language 
- 
-![image](https://github.com/user-attachments/assets/e7c8a803-dcd5-4e25-af4d-3b30e895c805)
+
